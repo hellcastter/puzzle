@@ -61,6 +61,9 @@ def check_rows(board):
     """
     return all([check_row(line) for line in board])
 
+def validate_board(board: list[str]) -> bool:
+    return False
+
 if __name__ == "__main__":
   import doctest
   print(doctest.testmod())
