@@ -1,7 +1,7 @@
-def colomn_check(board: list[str]) -> bool:
+def columns_check(board: list[str]) -> bool:
     '''
     Transform the board and then check it in the check_row fnction
-    >>> colomn_check([\
+    >>> column_check([\
         "**** ****",\
         "***1 ****",\
         "**  3****",\
@@ -14,9 +14,5 @@ def colomn_check(board: list[str]) -> bool:
     ])
     False
     '''
-    colomns = [''.join([el[i] for el in board]) for i in range(len(board[0]))]
-    return check_row(colomns)
-
-if __name__ == "__main__":
-    import doctest
-    print(doctest.testmod())
+    columns = [''.join([el[i] for el in board]) for i in range(len(board[0]))]
+    return check_rows(columns)
