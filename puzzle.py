@@ -1,3 +1,6 @@
+""" Puzzle """
+BOARD = list[str]
+
 def check_row(line: str) -> bool:
     """Check wheather in row only unique nums
 
@@ -6,7 +9,7 @@ def check_row(line: str) -> bool:
 
     Returns:
         bool: is valid
-    
+
     >>> check_row("**** ****")
     True
     >>> check_row("* 4 1****")
@@ -17,10 +20,10 @@ def check_row(line: str) -> bool:
     for i in line:
         if i.isnumeric() and line.count(i) != 1:
             return False
-            
+
     return True
 
-def check_rows(board):
+def check_rows(board: BOARD) -> bool:
     """
     >>> check_rows([ \
         "**** ****", \
@@ -61,7 +64,7 @@ def check_rows(board):
     """
     return all([check_row(line) for line in board])
 
-def check_cells(board):
+def check_cells(board: BOARD) -> bool:
     """
     >>> check_cells(["**** ****",\
         "***1 ****",\
@@ -97,10 +100,10 @@ def check_cells(board):
 
         if not check_row(lst):
             return False
-        
+
     return True
 
-def columns_check(board: list[str]) -> bool:
+def columns_check(board: BOARD) -> bool:
     '''
     Transform the board and then check it in the check_row fnction
     >>> columns_check([\
@@ -119,8 +122,7 @@ def columns_check(board: list[str]) -> bool:
     columns = [''.join([el[i] for el in board]) for i in range(len(board[0]))]
     return check_rows(columns)
 
-
-def validate_board(board: list[str]) -> bool:
+def validate_board(board: BOARD) -> bool:
     """Validates board
 
     Args:
@@ -128,7 +130,7 @@ def validate_board(board: list[str]) -> bool:
 
     Returns:
         bool: is valid
-        
+
     >>> validate_board([\
         "**** ****",\
         "***1 ****",\
@@ -156,15 +158,15 @@ def validate_board(board: list[str]) -> bool:
     """
     if not check_rows(board):
         return False
-    
+
     if not columns_check(board):
         return False
-    
+
     if not check_cells(board):
         return False
-    
+
     return True
 
 if __name__ == "__main__":
-  import doctest
-  print(doctest.testmod())
+    import doctest
+    print(doctest.testmod())
